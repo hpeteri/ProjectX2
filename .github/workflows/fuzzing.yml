@@ -21,7 +21,9 @@ jobs:
 
       - name: Run Docker Container
         run: docker run -d my-fuzzing-container
-             docker wait my-fuzzing-container
+
+      - name: Wait for Container
+        run: docker wait my-fuzzing-container
 
       - name: Create Artifacts dir
         run: mkdir -p fuzz_results
