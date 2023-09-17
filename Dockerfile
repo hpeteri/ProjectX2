@@ -4,8 +4,6 @@ FROM ubuntu:latest
 #Default directory
 WORKDIR /ProjectX
 
-
-
 RUN apt-get update && \
     apt-get install -y --no-install-recommends python3 git curl clang llvm lcov default-jdk zip && \
     apt-get clean && \
@@ -22,9 +20,9 @@ RUN bazel --version
 RUN sh -c "$(curl -fsSL https://raw.githubusercontent.com/CodeIntelligenceTesting/cifuzz/main/install.sh)"
 
 #Provide your repository link below
-RUN git clone <your_repository_link>
+RUN git clone https://github.com/hpeteri/ProjectX2.git
 
 WORKDIR /ProjectX/ProjectX2
 RUN ls -a
 
-CMD ["sh", "-c", "cifuzz run test:test --use-sandbox=false > /ProjectX/ProjectX2/fuzzing.log 2>&1 && cat /ProjectX/ProjectX2/fuzzing.log"]
+CMD ["sh", "-c", "cifuzz run test:test --use-sandbox=false > ./fuzzing.log 2>&1 && cat ./fuzzing.log"]
