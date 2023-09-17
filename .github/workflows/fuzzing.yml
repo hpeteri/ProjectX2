@@ -28,9 +28,6 @@ jobs:
       - name: debug print
         run: ls -la
 
-      - name: container debug print
-        run: docker exec my-fuzzing-container ls ./
-
       - name: container copy
         run: docker cp my-fuzzing-container:/ProjectX2/fuzzing.log ./fuzz_results/output.log
 
