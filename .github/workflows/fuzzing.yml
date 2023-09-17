@@ -20,7 +20,7 @@ jobs:
         run: docker build -t my-fuzzing-container -f ./Dockerfile  .
 
       - name: Run Docker Container
-        run: docker run --name fuzzer-container my-fuzzing-container
+        run: docker run -d --name fuzzer-container my-fuzzing-container
 
       - name: Create Artifacts dir
         run: mkdir -p fuzz_results
