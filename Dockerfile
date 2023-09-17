@@ -22,7 +22,7 @@ RUN sh -c "$(curl -fsSL https://raw.githubusercontent.com/CodeIntelligenceTestin
 #Provide your repository link below
 RUN git clone https://github.com/hpeteri/ProjectX2.git
 
-WORKDIR /ProjectX/ProjectX2
+WORKDIR ./ProjectX2
 RUN ls -a
 
 CMD ["sh", "-c", "cifuzz run test:test --use-sandbox=false > ./fuzzing.log 2>&1 && cat ./fuzzing.log"]

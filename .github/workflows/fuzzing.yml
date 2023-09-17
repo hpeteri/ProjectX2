@@ -22,3 +22,17 @@ jobs:
       - name: Run Docker Container
         run: docker run --rm my-fuzzing-container
 
+      - name: Create Artifacts dir
+        run: mkdir -p fuzz_results
+
+      - name: debug print
+        run: ls -la
+
+      - name: Copy Artifacts
+        run cp -r ./ProjectX2/fuzzing.log ./fuzz_results/output.log
+
+      - name: Upload Fuzzing Artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: fuzzing-results
+          path: fuzzing_results
