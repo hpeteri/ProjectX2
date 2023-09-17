@@ -20,14 +20,14 @@ jobs:
         run: docker build -t my-fuzzing-container -f ./Dockerfile  .
 
       - name: Run Docker Container
-        run: docker run --name my-fuzzing-container my-fuzzing-container
+        run: docker run --name fuzzer-container my-fuzzing-container
 
       - name: Create Artifacts dir
         run: mkdir -p fuzz_results
 
       - name: container copy
 
-        run: docker cp my-fuzzing-container:/ProjectX2/fuzzing.log ./fuzz_results/output.log
+        run: docker cp fuzzer-container:/ProjectX2/fuzzing.log ./fuzz_results/output.log
 
       - name: Upload Fuzzing Artifacts
         uses: actions/upload-artifact@v2
